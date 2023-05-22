@@ -1,0 +1,59 @@
+// Microblog schemas
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String
+  nickname   String   @unique
+  firstname  String   @map("first_name")
+  lastname   String   @map("last_name")
+  createDate DateTime @default(now()) @map("create_date")
+
+  posts    Post[]
+  comments Comment[]
+
+  @@map("users")
+}
+
+model Comment {
+  id         String   @id @default(uuid())
+  content    String
+  assets     String[]
+  likes      Int      @default(0)
+  isDraft    Boolean  @default(false) @map("is_draft")
+  createDate DateTime @default(now()) @map("create_date")
+  lastUpdate DateTime @default(now()) @map("last_update")
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+  post   Post   @relation(fields: [postId], references: [id])
+  postId String @map("post_id")
+
+  @@map("comments")
+}
+
+model Post {
+  id         String   @id @default(uuid())
+  title      String
+  body       String
+  assets     String[]
+  likes      Int      @default(0)
+  isDraft    Boolean  @default(false) @map("is_draft")
+  createDate DateTime @default(now()) @map("create_date")
+  lastUpdate DateTime @default(now()) @map("last_update")
+
+  comments Comment[]
+  author   User      @relation(fields: [authorId], references: [id])
+  authorId String    @map("author_id")
+
+  @@map("posts")
+}
