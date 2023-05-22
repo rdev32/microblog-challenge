@@ -1,0 +1,420 @@
+openapi: 3.0.3
+info:
+  title: Microblog Nerdery Challenge
+  description:
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida blandit purus nec placerat. Sed porttitor sed erat pellentesque vehicula. Morbi commodo purus vitae tincidunt elementum. Vivamus aliquet, purus et bibendum congue, massa neque faucibus nisi, at lobortis sem dolor sed velit. Cras porttitor dolor volutpat, ornare quam at, faucibus dui. Fusce sit amet suscipit eros. Cras ultrices lobortis risus, at ornare eros congue a.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: renatomonroy@ravn.co
+  license:
+    name: UNLICENCED
+  version: 0.0.1 ALPHA
+
+externalDocs:
+  description: Project repository
+  url: https://github.com/rdev32/microblog-challenge
+
+servers:
+  - url: https://localhost:3000
+
+tags:
+  - name: Account
+    description: User account routes
+    
+  - name: Post
+    description: User post routes
+    
+  - name: Comment
+    description: User comment routes
+
+paths:
+  /accounts/:
+    get:
+      tags:
+        - Account
+      summary: Recieve all accounts
+      description: Returns all the accounts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '500':
+          description: Server error
+    post:
+      tags:
+        - Account
+      summary: Submit a new account
+      description: Returns all the accounts
+      responses:
+        '200':
+          description: Successful operation
+        '500':
+          description: Server error
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+
+  /accounts/:id/:
+    get:
+      tags:
+        - Account
+      summary: Recieves an account
+      description: Returns all the accounts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '500':
+          description: Server error
+    put:
+      tags:
+        - Account
+      summary: Edit an account
+      description: Returns all the accounts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '500':
+          description: Server error
+    delete:
+      tags:
+        - Account
+      summary: Delete an account
+      description: Returns all the accounts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '500':
+          description: Server error
+  /accounts/:id/posts/:
+    get:
+      tags:
+        - Account
+      summary: Gets all the posts from an account
+      description: Gets all the posts from an account
+      responses:
+        '200':
+          description: Success
+        '500':
+          description: Server error
+  /accounts/:id/comments/:
+    get:
+      tags:
+        - Account
+      summary: Gets all the comments from an account
+      description: Gets all the comments from an account
+      responses:
+        '200':
+          description: Success
+        '500':
+          description: Server error
+
+
+
+  /comments/:
+    get:
+      tags:
+        - Comment
+      summary: Recieve all comments
+      description: Returns all the comments
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '500':
+          description: Server error
+    post:
+      tags:
+        - Comment
+      summary: Submit a new account
+      description: Returns all the comments
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '500':
+          description: Server error
+
+  /comments/:id/:
+    get:
+      tags:
+        - Comment
+      summary: Recieves an account
+      description: Returns all the comments
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '500':
+          description: Server error
+    put:
+      tags:
+        - Comment
+      summary: Edit an account
+      description: Returns all the comments
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '500':
+          description: Server error
+    delete:
+      tags:
+        - Comment
+      summary: Delete an account
+      description: Returns all the comments
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '500':
+          description: Server error
+
+
+
+  /posts/:
+    get:
+      tags:
+        - Post
+      summary: Recieve all posts
+      description: Returns all the posts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '500':
+          description: Server error
+    post:
+      tags:
+        - Post
+      summary: Submit a new account
+      description: Returns all the posts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '500':
+          description: Server error
+
+  /posts/:id/:
+    get:
+      tags:
+        - Post
+      summary: Recieves an posts
+      description: Returns all the posts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '500':
+          description: Server error
+    put:
+      tags:
+        - Post
+      summary: Edit an account
+      description: Returns all the posts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '500':
+          description: Server error
+    delete:
+      tags:
+        - Post
+      summary: Delete an account
+      description: Returns all the posts
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+        '500':
+          description: Server error
+  /posts/:id/comments/:
+    get:
+      tags:
+        - Post
+      summary: Gives all the comments on a post
+      description: Gives all the comments on a post
+      responses:
+        '200':
+          description: Success
+        '500':
+          description: Server error
+  /posts/:id/account/:
+    get:
+      tags:
+        - Post
+      summary: Gives the author of the post
+      description: Gives  the author of the post
+      responses:
+        '200':
+          description: Success
+        '500':
+          description: Server error
+
+
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Account ID
+          example: 'uuid'
+        nickname:
+          type: string
+          description: Account nickname
+          example: 'jonnyd'
+        email:
+          type: string
+          description: Account email
+          example: 'jhon@doe.net'
+        password:
+          type: string
+          description: Account password
+          format: password
+          example: 'password123'
+        token:
+          type: string
+          description: JWT Token
+          example: 'j102n012-01u012n9012-9137bb46984129vx'
+        created_at:
+          type: string
+          format: date-time
+        last_update:
+          type: string
+          format: date-time
+
+    Post:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Post ID
+          example: 'uuid'
+        title:
+          type: string
+          description: Post title
+          example: 'Untitled'
+        body:
+          type: string
+          description: Post content
+          example: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin gravida blandit purus nec placerat. Sed porttitor sed erat pellentesque vehicula.'
+        likes:
+          type: integer
+          description: Post like count
+          example: 32
+        assets:
+          type: array
+          items:
+            type: string
+          description: Post resource urls
+          example: '["https://tenor.gif/test", "https://tenor.gif/test1"]'
+        is_draft:
+          type: boolean
+          description: If post is a draft
+          example: true
+        created_at:
+          type: string
+          description: When the post was created
+          format: date-time
+        last_update:
+          type: string
+          description: When the post was last updated
+          format: date-time
+        author_id:
+          type: string
+          description: The author post ID
+          example: 'uuid'
+
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Comment ID
+          example: 'uuid'
+        content:
+          type: string
+          description: Comment content
+          example: 'Lets go'
+        likes:
+          type: integer
+          description: Comment like count
+          example: 2
+        assets:
+          type: array
+          items:
+            type: string
+          description: Assets attached to the comment
+          example: '["https://tenor.gif/test", "https://tenor.gif/test1"]'
+        is_draft:
+          type: boolean
+          description: Tells us if this comment is a draft
+          example: false
+        created_at:
+          type: string
+          description: When was this comment created
+          format: date-time
+        last_update:
+          type: string
+          description: When was this comment last updated
+          format: date-time
+        author_id:
+          type: string
+          description: author ID
+          example: 'uuid'
+        post_id:
+          type: string
+          description: post ID
+          example: 'uuid'
