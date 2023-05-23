@@ -1,0 +1,27 @@
+{
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "semi": false,
+    "useTabs": false,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "overrides": [
+        {
+            "files": [
+                "*.html",
+                "*.sass",
+                "*.jsx",
+                "*.tsx",
+                "*.xml",
+                "*.yaml",
+                "*.json",
+                "*.toml"
+            ],
+            "options": {
+                "useTabs": false,
+                "tabWidth": 2
+            }
+        }
+    ]
+}
