@@ -10,13 +10,21 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  email      String   @unique
-  password   String
-  nickname   String   @unique
-  firstname  String   @map("first_name")
-  lastname   String   @map("last_name")
-  createDate DateTime @default(now()) @map("create_date")
+  id String @id @default(uuid())
+
+  email     String   @unique
+  password  String
+  nickname  String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+
+  firstname String @map("first_name")
+  lastname  String @map("last_name")
+
+  verified    Boolean @default(false)
+  publicEmail Boolean @default(true)
+  publicName  Boolean @default(true)
+
+  tokens String[]
 
   posts    Post[]
   comments Comment[]
@@ -25,13 +33,15 @@ model User {
 }
 
 model Comment {
-  id         String   @id @default(uuid())
-  content    String
-  assets     String[]
-  likes      Int      @default(0)
-  isDraft    Boolean  @default(false) @map("is_draft")
-  createDate DateTime @default(now()) @map("create_date")
-  lastUpdate DateTime @default(now()) @map("last_update")
+  id String @id @default(uuid())
+
+  content String
+  assets  String[]
+
+  likes     Int       @default(0)
+  isDraft   Boolean   @default(false) @map("is_draft")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
 
   user   User   @relation(fields: [userId], references: [id])
   userId String @map("user_id")
@@ -42,18 +52,20 @@ model Comment {
 }
 
 model Post {
-  id         String   @id @default(uuid())
-  title      String
-  body       String
-  assets     String[]
-  likes      Int      @default(0)
-  isDraft    Boolean  @default(false) @map("is_draft")
-  createDate DateTime @default(now()) @map("create_date")
-  lastUpdate DateTime @default(now()) @map("last_update")
+  id String @id @default(uuid())
+
+  title   String
+  content String
+  assets  String[]
+
+  likes     Int       @default(0)
+  isDraft   Boolean   @default(false) @map("is_draft")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
 
   comments Comment[]
-  author   User      @relation(fields: [authorId], references: [id])
-  authorId String    @map("author_id")
+  user     User      @relation(fields: [userId], references: [id])
+  userId   String    @map("author_id")
 
   @@map("posts")
 }
